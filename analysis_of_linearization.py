@@ -31,19 +31,19 @@ B = np.expand_dims( np.array( [0, 1.0/M, 0., -1/(M*L)] ), 1 )
 
 #B = np.array( [] )
 
-print 'A\n', A
-print 'B\n', B
+print('A\n', A)
+print('B\n', B)
 
 # Controllability
-print '---Controllability'
-print 'rank of ctrb(A,b)' , np.linalg.matrix_rank( control.ctrb( A, B ) )
-print 'Eigenvalues of A ', np.linalg.eig( A )
+print('---Controllability')
+print('rank of ctrb(A,b)' , np.linalg.matrix_rank( control.ctrb( A, B ) ))
+print('Eigenvalues of A ', np.linalg.eig( A ))
 
 
 # Pole Placement
 K = control.place( A, B, [-1, -2, -4, -5] )
-print '---Pole Placement\nK=\n', K
+print('---Pole Placement\nK=\n', K)
 
 # Verification of Eigen values of A-BK
-print '---Verification of Eigen values of A-BK'
-print 'Eigenvalues of A-BK', np.linalg.eig( A-np.matmul(B,K) )
+print('---Verification of Eigen values of A-BK')
+print('Eigenvalues of A-BK', np.linalg.eig( A-np.matmul(B,K) ))

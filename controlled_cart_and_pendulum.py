@@ -29,7 +29,7 @@ class MyLinearizedSystem:
         self.B = np.expand_dims( np.array( [0, 1.0/M, 0., -1/(M*L)] ) , 1 ) # 4x1
 
     def compute_K(self, desired_eigs = [-0.1, -0.2, -0.3, -0.4] ):
-        print '[compute_K] desired_eigs=', desired_eigs
+        print('[compute_K] desired_eigs=', desired_eigs)
         self.K = control.place( self.A, self.B,  desired_eigs )
 
     def get_K(self):
@@ -58,7 +58,7 @@ ss.compute_K(desired_eigs = E ) # Arbitarily set desired eigen values
 # The control law is u = KY. K is the unknown which is computed as a solution to minimization problem.
 def u( t , y ):
     u_ = -np.matmul( ss.K , y - np.array([0,0,np.pi/2.,0]) ) # This was important
-    print 'u()', 't=',t, 'u_=', u_
+    print('u()', 't=',t, 'u_=', u_)
     # code.interact(local=dict(globals(), **locals()))
     # return 0.1
     return u_[0]
@@ -95,8 +95,8 @@ if __name__=="__1main__":
     # in two ways a) non-linear b) linear approximation
 
     at_y = np.array( [0,0,np.pi/2+0.1,0.002] )
-    print 'non-linear', y_dot( 1.0, at_y )
-    print 'linearized ', np.matmul( ss.A, at_y - np.array([0,0,np.pi/2.,0]) )  + ss.B.T * 0.1
+    print('non-linear', y_dot( 1.0, at_y ))
+    print('linearized ', np.matmul( ss.A, at_y - np.array([0,0,np.pi/2.,0]) )  + ss.B.T * 0.1)
     code.interact(local=dict(globals(), **locals()))
 
     # See also analysis_of_linearization to know more.
@@ -120,5 +120,5 @@ if __name__=="__main__":
         cv2.imshow( 'im', rendered )
         cv2.moveWindow( 'im', 100, 100 )
 
-        if cv2.waitKey(0) == ord('q'):
+        if cv2.waitKey(100) == ord('q'):
             break
